@@ -1,7 +1,7 @@
 
 // EKS Cluster IAM Role
-resource "aws_iam_role" "ahntest2-eks_iam_cluster" {
-  name = "AHNTEST2-EKS-IAM-CLUSTER"
+resource "aws_iam_role" "pwj-eks_iam_cluster" {
+  name = "PWJ-EKS-IAM-CLUSTER"
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -19,18 +19,18 @@ POLICY
 }
 
 // EKS Cluster IAM Policy
-resource "aws_iam_role_policy_attachment" "ahntest2-eks_iam_cluster_AmazonEKSClusterPolicy" {
-  role = aws_iam_role.ahntest2-eks_iam_cluster.name
+resource "aws_iam_role_policy_attachment" "pwj-eks_iam_cluster_AmazonEKSClusterPolicy" {
+  role = aws_iam_role.pwj-eks_iam_cluster.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
-resource "aws_iam_role_policy_attachment" "ahntest2-eks_iam_cluster_AmazonEKSVPCResourceController" {
-  role = aws_iam_role.ahntest2-eks_iam_cluster.name
+resource "aws_iam_role_policy_attachment" "pwj-eks_iam_cluster_AmazonEKSVPCResourceController" {
+  role = aws_iam_role.pwj-eks_iam_cluster.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
 }
 
 // EKS Worker Node IAM Role
-resource "aws_iam_role" "ahntest2-eks_iam_nodes" {
-  name = "AHNTEST2-EKS-IAM-WORKERNODE"
+resource "aws_iam_role" "pwj-eks_iam_nodes" {
+  name = "PWJ-EKS-IAM-WORKERNODE"
   assume_role_policy = <<POLICY
 {
   "Version": "2012-10-17",
@@ -48,15 +48,15 @@ POLICY
 }
 
 // EKS Worker Node IAM Policy
-resource "aws_iam_role_policy_attachment" "ahntest2-eks_iam_cluster_AmazonEKSWorkerNodePolicy" {
-  role = aws_iam_role.ahntest2-eks_iam_nodes.name
+resource "aws_iam_role_policy_attachment" "pwj-eks_iam_cluster_AmazonEKSWorkerNodePolicy" {
+  role = aws_iam_role.pwj-eks_iam_nodes.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
 }
-resource "aws_iam_role_policy_attachment" "ahntest2-eks_iam_cluster_AmazonEKS_CNI_Policy" {
-  role = aws_iam_role.ahntest2-eks_iam_nodes.name
+resource "aws_iam_role_policy_attachment" "pwj-eks_iam_cluster_AmazonEKS_CNI_Policy" {
+  role = aws_iam_role.pwj-eks_iam_nodes.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
 }
-resource "aws_iam_role_policy_attachment" "ahntest2-eks_iam_cluster_AmazonEC2ContainerRegistryReadOnly" {
-  role = aws_iam_role.ahntest2-eks_iam_nodes.name
+resource "aws_iam_role_policy_attachment" "pwj-eks_iam_cluster_AmazonEC2ContainerRegistryReadOnly" {
+  role = aws_iam_role.pwj-eks_iam_nodes.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }

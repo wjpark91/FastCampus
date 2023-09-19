@@ -1,19 +1,19 @@
-resource "aws_route_table" "ahntest2-route-table-pub-sub" {
+resource "aws_route_table" "pwj-route-table-pub-sub" {
 
   depends_on = [
-    aws_vpc.ahntest2-vpc,
-    aws_internet_gateway.ahntest2-internet-gateway
+    aws_vpc.pwj-vpc,
+    aws_internet_gateway.pwj-internet-gateway
   ]
 
-  vpc_id = aws_vpc.ahntest2-vpc.id
+  vpc_id = aws_vpc.pwj-vpc.id
 
   route {
       cidr_block = "0.0.0.0/0"
-      gateway_id = aws_internet_gateway.ahntest2-internet-gateway.id
+      gateway_id = aws_internet_gateway.pwj-internet-gateway.id
   }
 
   tags = {
-    Name = "ahntest2-route-table-pub-sub"
+    Name = "pwj-route-table-pub-sub"
   }
 
 }

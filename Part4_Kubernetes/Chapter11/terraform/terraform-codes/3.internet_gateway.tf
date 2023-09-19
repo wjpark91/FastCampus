@@ -1,12 +1,12 @@
-resource "aws_internet_gateway" "ahntest2-internet-gateway" {
+resource "aws_internet_gateway" "pwj-internet-gateway" {
 
   depends_on = [
-    aws_vpc.ahntest2-vpc
+    aws_vpc.pwj-vpc
   ]
 
-  vpc_id = aws_vpc.ahntest2-vpc.id
+  vpc_id = aws_vpc.pwj-vpc.id
 
   tags = {
-    Name = "ahntest2-internet-gateway"
+    Name = "pwj-internet-gateway"
   }
 }

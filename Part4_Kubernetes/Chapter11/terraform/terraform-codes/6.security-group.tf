@@ -1,7 +1,7 @@
 // Default SG
-resource "aws_default_security_group" "ahntest2-vpc_sg_default"{
+resource "aws_default_security_group" "pwj-vpc_sg_default"{
 
-    vpc_id = aws_vpc.ahntest2-vpc.id
+    vpc_id = aws_vpc.pwj-vpc.id
 
     ingress {
       protocol  = -1
@@ -18,26 +18,26 @@ resource "aws_default_security_group" "ahntest2-vpc_sg_default"{
     }
 
     tags = {
-      Name = "ahntest2-vpc_sg_default"
+      Name = "pwj-vpc_sg_default"
     }    
 }
 
 // EKS Cluster SG
-resource "aws_security_group" "ahntest2-eks_sg_controlplane" {
+resource "aws_security_group" "pwj-eks_sg_controlplane" {
 
-    vpc_id = aws_vpc.ahntest2-vpc.id
-    name = "ahntest2-eks_sg_controlplane"
+    vpc_id = aws_vpc.pwj-vpc.id
+    name = "pwj-eks_sg_controlplane"
     description = "Communication between the control plane and worker nodegroups"
 
     tags = {
-      "Name" = "ahntest2-eks_sg_controlplane"
+      "Name" = "pwj-eks_sg_controlplane"
     }
 }
 
-resource "aws_security_group_rule" "ahntest2-eks_sg_cluster_inbound" {
+resource "aws_security_group_rule" "pwj-eks_sg_cluster_inbound" {
 
-    security_group_id = aws_security_group.ahntest2-eks_sg_controlplane.id
-    source_security_group_id = aws_security_group.ahntest2-eks_sg_nodes.id
+    security_group_id = aws_security_group.pwj-eks_sg_controlplane.id
+    source_security_group_id = aws_security_group.pwj-eks_sg_nodes.id
 
     type = "ingress"
     from_port = 443
@@ -46,10 +46,10 @@ resource "aws_security_group_rule" "ahntest2-eks_sg_cluster_inbound" {
     description = "Allow nodes to communicate with the cluster API Server"
 }
 
-resource "aws_security_group_rule" "ahntest2-eks_sg_cluster_outbound" {
+resource "aws_security_group_rule" "pwj-eks_sg_cluster_outbound" {
 
-    security_group_id = aws_security_group.ahntest2-eks_sg_controlplane.id
-    source_security_group_id = aws_security_group.ahntest2-eks_sg_nodes.id
+    security_group_id = aws_security_group.pwj-eks_sg_controlplane.id
+    source_security_group_id = aws_security_group.pwj-eks_sg_nodes.id
 
     type = "egress"
     from_port = 1025
@@ -59,10 +59,10 @@ resource "aws_security_group_rule" "ahntest2-eks_sg_cluster_outbound" {
 }
 
 // EKS Worker Node SG
-resource "aws_security_group" "ahntest2-eks_sg_nodes" {
+resource "aws_security_group" "pwj-eks_sg_nodes" {
 
-    vpc_id = aws_vpc.ahntest2-vpc.id
-    name = "ahntest2-eks_sg_nodes"
+    vpc_id = aws_vpc.pwj-vpc.id
+    name = "pwj-eks_sg_nodes"
     description = "Security group for worker nodes in Cluster"
 
     egress {
@@ -73,14 +73,14 @@ resource "aws_security_group" "ahntest2-eks_sg_nodes" {
     }
 
     tags = {
-      "Name" = "ahntest2-eks_sg_nodes"
+      "Name" = "pwj-eks_sg_nodes"
     }
 }
 
-resource "aws_security_group_rule" "ahntest2-eks_sg_nodes_internal" {
+resource "aws_security_group_rule" "pwj-eks_sg_nodes_internal" {
 
-    security_group_id = aws_security_group.ahntest2-eks_sg_nodes.id
-    source_security_group_id = aws_security_group.ahntest2-eks_sg_nodes.id
+    security_group_id = aws_security_group.pwj-eks_sg_nodes.id
+    source_security_group_id = aws_security_group.pwj-eks_sg_nodes.id
 
     type = "ingress"
     from_port = 0
@@ -89,10 +89,10 @@ resource "aws_security_group_rule" "ahntest2-eks_sg_nodes_internal" {
     description = "Allow nodes to communicate with each other"
 }
 
-resource "aws_security_group_rule" "ahntest2-eks_sg_nodes_inbound" {
+resource "aws_security_group_rule" "pwj-eks_sg_nodes_inbound" {
 
-    security_group_id = aws_security_group.ahntest2-eks_sg_nodes.id
-    source_security_group_id = aws_security_group.ahntest2-eks_sg_controlplane.id
+    security_group_id = aws_security_group.pwj-eks_sg_nodes.id
+    source_security_group_id = aws_security_group.pwj-eks_sg_controlplane.id
 
     type = "ingress"
     from_port = 1025
@@ -101,10 +101,10 @@ resource "aws_security_group_rule" "ahntest2-eks_sg_nodes_inbound" {
     description = "Allow worker Kubelets and pods to receive communication from the cluster control plane"   
 }
 
-resource "aws_security_group_rule" "ahntest2-eks_sg_nodes_ssh_inbound" {
+resource "aws_security_group_rule" "pwj-eks_sg_nodes_ssh_inbound" {
 
-    security_group_id = aws_security_group.ahntest2-eks_sg_nodes.id
-    source_security_group_id = aws_security_group.ahntest2-eks_sg_controlplane.id
+    security_group_id = aws_security_group.pwj-eks_sg_nodes.id
+    source_security_group_id = aws_security_group.pwj-eks_sg_controlplane.id
 
     type = "ingress"
     from_port = 443

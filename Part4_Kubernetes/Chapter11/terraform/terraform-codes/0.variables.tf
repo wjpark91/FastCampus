@@ -4,7 +4,7 @@ variable "aws_region" {
 }
 
 variable "cluster-name" {
-  default = "ahntest2-eks-cluster"
+  default = "pwj-eks-cluster"
   type    = string
 }
 

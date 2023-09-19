@@ -8,10 +8,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "ahntest2-s3-tf-state"
+    bucket = "pwj-s3-tf-state"
     key = "terraform.tfstate"
     region = "ap-northeast-2"
-    dynamodb_table = "ahntest2-ddb-tf-lock"
+    dynamodb_table = "pwj-ddb-tf-lock"
     encrypt = "true"
   }
 }
