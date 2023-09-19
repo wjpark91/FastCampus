@@ -1,17 +1,17 @@
-resource "aws_s3_bucket" "ahntest2-s3-tf-state" {
+resource "aws_s3_bucket" "pwj-s3-tf-state" {
 
-  bucket = "ahntest2-s3-tf-state"
+  bucket = "pwj-s3-tf-state"
 
   tags = {
-    "Name" = "ahntest2-s3-tf-state"
+    "Name" = "pwj-s3-tf-state"
   }
   
 }
 
-resource "aws_dynamodb_table" "ahntest2-ddb-tf-lock" {
+resource "aws_dynamodb_table" "pwj-ddb-tf-lock" {
 
-  depends_on   = [aws_s3_bucket.ahntest2-s3-tf-state]
-  name         = "ahntest2-ddb-tf-lock"
+  depends_on   = [aws_s3_bucket.pwj-s3-tf-state]
+  name         = "pwj-ddb-tf-lock"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 
@@ -21,7 +21,7 @@ resource "aws_dynamodb_table" "ahntest2-ddb-tf-lock" {
   }
 
   tags = {
-    "Name" = "ahntest2-ddb-tf-lock"
+    "Name" = "pwj-ddb-tf-lock"
   }
 
 }
