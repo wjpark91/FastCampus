@@ -1,1 +1,33 @@
 time="2023-09-20T07:39:56Z" level=info msg="Argo Rollouts Dashboard is now available at http://localhost:3100/rollouts"
+time="2023-09-20T08:49:01Z" level=error msg="Error writing response: write tcp 172.31.41.69:3100->223.38.73.30:53201: write: broken pipe"
+time="2023-09-20T08:49:01Z" level=error msg="Error writing response: write tcp 172.31.41.69:3100->223.38.73.30:53197: write: broken pipe"
+time="2023-09-20T08:49:01Z" level=error msg="Error writing response: write tcp 172.31.41.69:3100->223.38.73.30:53209: write: broken pipe"
+time="2023-09-20T09:11:01Z" level=error msg="Observed a panic: \"send on closed channel\" (send on closed channel)\ngoroutine 1672 [running]:\nk8s.io/apimachinery/pkg/util/runtime.logPanic({0x207ae20?, 0x3b51740})\n\t/go/pkg/mod/k8s.io/apimachinery@v0.25.8/pkg/util/runtime/runtime.go:75 +0x99\nk8s.io/apimachinery/pkg/util/runtime.HandleCrash({0x0, 0x0, 0xc000b88b80?})\n\t/go/pkg/mod/k8s.io/apimachinery@v0.25.8/pkg/util/runtime/runtime.go:49 +0x75\npanic({0x207ae20, 0x3b51740})\n\t/usr/local/go/src/runtime/panic.go:884 +0x213\ngithub.com/argoproj/argo-rollouts/server.(*ArgoRolloutsServer).WatchRolloutInfo.func1(0xc000975340)\n\t/go/src/github.com/argoproj/argo-rollouts/server/server.go:202 +0x27\ngithub.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller.(*RolloutViewController).RegisterCallback.func1({0x236ce80?, 0xc000975340?})\n\t/go/src/github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller/viewcontroller.go:219 +0x36\ngithub.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller.(*viewController).processNextWorkItem(0xc0009f6300)\n\t/go/src/github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller/viewcontroller.go:168 +0x20c\ngithub.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller.(*viewController).Run.func1()\n\t/go/src/github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller/viewcontroller.go:146 +0x29\nk8s.io/apimachinery/pkg/util/wait.BackoffUntil.func1(0x30?)\n\t/go/pkg/mod/k8s.io/apimachinery@v0.25.8/pkg/util/wait/wait.go:157 +0x3e\nk8s.io/apimachinery/pkg/util/wait.BackoffUntil(0x3b492f0?, {0x3b57520, 0xc000ad9020}, 0x1, 0xc000a671a0)\n\t/go/pkg/mod/k8s.io/apimachinery@v0.25.8/pkg/util/wait/wait.go:158 +0xb6\nk8s.io/apimachinery/pkg/util/wait.JitterUntil(0x3b525c0?, 0x3b9aca00, 0x0, 0xd0?, 0xc000417f10?)\n\t/go/pkg/mod/k8s.io/apimachinery@v0.25.8/pkg/util/wait/wait.go:135 +0x89\nk8s.io/apimachinery/pkg/util/wait.Until(0xc000417fd0?, 0x901e66?, 0xc000adc7c0?)\n\t/go/pkg/mod/k8s.io/apimachinery@v0.25.8/pkg/util/wait/wait.go:92 +0x25\ncreated by github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller.(*viewController).Run\n\t/go/src/github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller/viewcontroller.go:145 +0xce\n" error="<nil>"
+panic: send on closed channel [recovered]
+	panic: send on closed channel
+
+goroutine 1672 [running]:
+k8s.io/apimachinery/pkg/util/runtime.HandleCrash({0x0, 0x0, 0xc000b88b80?})
+	/go/pkg/mod/k8s.io/apimachinery@v0.25.8/pkg/util/runtime/runtime.go:56 +0xd7
+panic({0x207ae20, 0x3b51740})
+	/usr/local/go/src/runtime/panic.go:884 +0x213
+github.com/argoproj/argo-rollouts/server.(*ArgoRolloutsServer).WatchRolloutInfo.func1(0xc000975340)
+	/go/src/github.com/argoproj/argo-rollouts/server/server.go:202 +0x27
+github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller.(*RolloutViewController).RegisterCallback.func1({0x236ce80?, 0xc000975340?})
+	/go/src/github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller/viewcontroller.go:219 +0x36
+github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller.(*viewController).processNextWorkItem(0xc0009f6300)
+	/go/src/github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller/viewcontroller.go:168 +0x20c
+github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller.(*viewController).Run.func1()
+	/go/src/github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller/viewcontroller.go:146 +0x29
+k8s.io/apimachinery/pkg/util/wait.BackoffUntil.func1(0x30?)
+	/go/pkg/mod/k8s.io/apimachinery@v0.25.8/pkg/util/wait/wait.go:157 +0x3e
+k8s.io/apimachinery/pkg/util/wait.BackoffUntil(0x3b492f0?, {0x3b57520, 0xc000ad9020}, 0x1, 0xc000a671a0)
+	/go/pkg/mod/k8s.io/apimachinery@v0.25.8/pkg/util/wait/wait.go:158 +0xb6
+k8s.io/apimachinery/pkg/util/wait.JitterUntil(0x3b525c0?, 0x3b9aca00, 0x0, 0xd0?, 0xc000417f10?)
+	/go/pkg/mod/k8s.io/apimachinery@v0.25.8/pkg/util/wait/wait.go:135 +0x89
+k8s.io/apimachinery/pkg/util/wait.Until(0xc000417fd0?, 0x901e66?, 0xc000adc7c0?)
+	/go/pkg/mod/k8s.io/apimachinery@v0.25.8/pkg/util/wait/wait.go:92 +0x25
+created by github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller.(*viewController).Run
+	/go/src/github.com/argoproj/argo-rollouts/pkg/kubectl-argo-rollouts/viewcontroller/viewcontroller.go:145 +0xce
+time="2023-09-22T07:56:52Z" level=info msg="Argo Rollouts Dashboard is now available at http://localhost:3100/rollouts"
+time="2023-09-26T07:39:33Z" level=info msg="Argo Rollouts Dashboard is now available at http://localhost:3100/rollouts"

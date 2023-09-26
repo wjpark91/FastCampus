@@ -468,7 +468,7 @@ controller:
       kubernetes.io/ingress.class: alb
       alb.ingress.kubernetes.io/scheme: internet-facing
       alb.ingress.kubernetes.io/target-type: ip
-      alb.ingress.kubernetes.io/subnets: subnet-0240e16f35a5c880f, subnet-0825c6cb915b0e02e
+      alb.ingress.kubernetes.io/subnets: subnet-0f1f445c433091389, subnet-09cf3b3da3bb46590
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
     # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
@@ -580,9 +580,9 @@ controller:
 
   httpsKeyStore:
     jenkinsHttpsJksSecretName: ''
-    # jenkinsHttpsJksSecretKey: "jenkins-jks-file"
-    # jenkinsHttpsJksPasswordSecretName: ""
-    # jenkinsHttpsJksPasswordSecretKey: "https-jks-password"
+    jenkinsHttpsJksSecretKey: "jenkins-jks-file"
+    jenkinsHttpsJksPasswordSecretName: ""
+    jenkinsHttpsJksPasswordSecretKey: "https-jks-password"
     enable: false
     disableSecretMount: false
     httpPort: 8081
@@ -1000,3 +1000,4 @@ helmtest:
     # Bash Automated Testing System (BATS)
     image: "bats/bats"
     tag: "1.9.0"
+
