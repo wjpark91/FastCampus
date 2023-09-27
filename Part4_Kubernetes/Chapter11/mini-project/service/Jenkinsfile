@@ -1,13 +1,13 @@
-def awsECRURL="<AWS ID Number>.dkr.ecr.ap-northeast-2.amazonaws.com/mini-project"
+def awsECRURL="422323523802.dkr.ecr.ap-northeast-2.amazonaws.com/mini-project"
 def awsKey="aws-key"
 def awsRegion="ap-northeast-2"
 def branch="main"
 def commitMsg="Mini Project CI/CD Pipeline Job"
 def directoryPath="Part4_Kubernetes/Chapter11/mini-project/service"
-def githubEmail="<Github Email Address>"
-def githubKey="github-key"
-def githubSSHURL="git@github.com:<Github Username>/FastCampus.git"
-def imageTag="<Color Tag>"
+def githubEmail="wjpark91@naver.com"
+def githubKey="github-ssh-key"
+def githubSSHURL="git@github.com:wjpark91/FastCampus.git"
+def imageTag="blue"
 
 podTemplate(yaml: '''
               apiVersion: v1
