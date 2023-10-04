@@ -61,8 +61,7 @@ podTemplate(yaml: '''
         stage('ECR Push') {
 
             container('docker') {
-                // docker.withRegistry("https://${awsECRURL}", "ecr:${awsRegion}:${awsKey}") {
-                    docker.withRegistry("https://${awsECRURL}", "${awsKey}") {
+                docker.withRegistry("https://${awsECRURL}", "ecr:ap-northeast-2:aws-key") {
                     sh "docker push ${awsECRURL}:${imageTag}"
                 }
             }
