@@ -7,7 +7,7 @@ def directoryPath="Part4_Kubernetes/Chapter11/mini-project/service"
 def githubEmail="wjpark91@naver.com"
 def githubKey="github-ssh-key"
 def githubSSHURL="git@github.com:wjpark91/FastCampus.git"
-def imageTag="red"
+def imageTag="yellow"
 
 podTemplate(yaml: '''
               apiVersion: v1
